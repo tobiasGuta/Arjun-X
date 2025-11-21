@@ -1,0 +1,4 @@
+#!/bin/bash
+# Wrapper script to run arjun from the virtual environment
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+"$DIR/venv/bin/arjun" "$@"
