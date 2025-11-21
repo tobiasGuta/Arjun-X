@@ -88,3 +88,7 @@ The parameter names wordlist is created by extracting top parameter names from [
 
 <img width="624" height="202" alt="Screenshot 2025-11-21 171018" src="https://github.com/user-attachments/assets/4c0058ed-6c00-485d-9c31-00fd395b90cb" />
 
+### Report HTML
+
+<img width="1904" height="461" alt="image" src="https://github.com/user-attachments/assets/74b9baaf-7151-446e-9347-c7b1c4267728" />
+
