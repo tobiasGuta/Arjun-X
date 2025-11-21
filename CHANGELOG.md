@@ -1,3 +1,11 @@
+#### 2.3.0
+- **Stealth Mode**: Added `--stealth` flag for Cloudflare/WAF evasion (randomized jitter, user-agent rotation).
+- **Smart Scoring**: Implemented `ParameterScorer` to prioritize high-risk parameters (e.g., `admin`, `id`).
+- **Auto-Testing**: Added `AutoTester` to automatically probe discovered parameters for basic vulnerabilities (XSS, SQLi).
+- **HTML Reporting**: Added `-oH` option to generate rich, color-coded HTML reports with risk scores.
+- **Cloudscraper Integration**: Replaced standard requests with `cloudscraper` for better handling of JS challenges.
+- **Structural Analysis**: Improved anomaly detection using DOM structure hashing (`dom_hash`) instead of just content length.
+
 #### 2.2.7
 - Added `--casing` option for casing style enforcement
 - Added `--ratelimit` option for explicitly defining requests/second

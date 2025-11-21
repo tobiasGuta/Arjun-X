@@ -9,6 +9,8 @@
 
 <h4 align="center">HTTP Parameter Discovery Suite</h4>
 
+> **Note:** This is an enhanced version of Arjun (Arjun-X), featuring Stealth Mode, Smart Scoring, and HTML Reporting. It builds upon the original work by s0md3v.
+
 <p align="center">
   <a href="https://github.com/s0md3v/Arjun/releases">
     <img src="https://img.shields.io/github/release/s0md3v/Arjun.svg">
