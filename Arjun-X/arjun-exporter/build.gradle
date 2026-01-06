@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'com.bughunter.arjunconverter'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // The core dependency for Burp Extensions, using a recent version.
+    compileOnly 'net.portswigger.burp.extensions:montoya-api:2025.12'
+}
+
+shadowJar {
+    // Set the main class that Burp loads
+    archiveBaseName.set('ArjunConverter')
+    archiveClassifier.set('')
+
+    // Ensure the manifest includes the Burp Extender Name
+    manifest {
+        attributes 'Burp-Extender-Name': 'Arjun Converter (Montoya)'
+    }
+}
