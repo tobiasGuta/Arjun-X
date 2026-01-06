@@ -1,88 +1,125 @@
-
 <h1 align="center">
   <br>
   <a href="https://github.com/s0md3v/Arjun"><img src="https://image.ibb.co/c618nq/arjun.png" alt="Arjun"></a>
   <br>
-  Arjun
+  Arjun-X
   <br>
 </h1>
 
-<h4 align="center">HTTP Parameter Discovery Suite</h4>
+<h4 align="center">Professional Grade HTTP Parameter Discovery Suite</h4>
 
-> **Note:** This is an enhanced version of Arjun (Arjun-X), featuring Stealth Mode, Smart Scoring, and HTML Reporting. It builds upon the original work by s0md3v.
+> **Note:** This is the enhanced **Arjun-X** edition. It has been re-architected for professional use, featuring a modern codebase, type safety, improved stealth capabilities, and smart risk scoring.
 
 <p align="center">
-  <a href="https://github.com/s0md3v/Arjun/releases">
-    <img src="https://img.shields.io/github/release/s0md3v/Arjun.svg">
+  <a href="#">
+    <img src="https://img.shields.io/badge/python-3.8+-blue.svg">
   </a>
-  <a href="https://pypi.python.org/pypi/arjun/">
-    <img src="https://img.shields.io/pypi/v/arjun.svg">
+  <a href="#">
+    <img src="https://img.shields.io/badge/license-MIT-green.svg">
   </a>
-  <a href="https://github.com/s0md3v/Arjun/issues?q=is%3Aissue+is%3Aclosed">
-      <img src="https://img.shields.io/github/issues-closed-raw/s0md3v/Arjun?color=dark-green&label=issues%20fixed">
-  </a>
-  <a href="https://travis-ci.com/s0md3v/Arjun">
-      <img src="https://img.shields.io/travis/com/s0md3v/Arjun.svg?color=dark-green&label=tests">
+  <a href="#">
+    <img src="https://img.shields.io/badge/status-stable-brightgreen.svg">
   </a>
 </p>
 
-![demo](https://i.ibb.co/p3VKSRJ/arjun-demo.png)
+---
 
-### What's Arjun?
+### What is Arjun-X?
 
-Arjun can find query parameters for URL endpoints. If you don't get what that means, it's okay, read along.
+Arjun-X is a specialized tool designed to discover hidden HTTP query parameters in URL endpoints. Web applications often use invisible parameters (`debug`, `admin`, `test`, `id`) that can open vectors for specific attacks like XSS, SQL Injection, or Privilege Escalation.
 
-Web applications use parameters (or queries) to accept user input, take the following example into consideration
+Arjun-X automates the discovery process by sending requests with huge lists of parameter names, but it does so intelligently—compressing thousands of attempts into just a few dozen requests using a specialized divide-and-conquer algorithm.
 
-`http://api.example.com/v1/userinfo?id=751634589`
+### Key Features
 
-This URL seems to load user information for a specific user id, but what if there exists a parameter named `admin` which when set to `True` makes the endpoint provide more information about the user?\
-This is what Arjun does, it finds valid HTTP parameters with a huge default dictionary of 25,890 parameter names.
+#### Professional Grade Core
+- **Modern Architecture**: Completely refactored codebase using modular design patterns.
+- **Type Safety**: Fully type-hinted execution flow for maximum stability.
+- **Robust Logging**: Specialized logging system replaces basic print statements for better debugging.
+- **Modern Packaging**: Compliant with PEP 517/518 using `pyproject.toml`.
 
-The best part? It takes less than 10 seconds to go through this huge list while making just 50-60 requests to the target. [Here's how](https://github.com/s0md3v/Arjun/wiki/How-Arjun-works%3F).
+#### Advanced Stealth & Evasion
+- **Stealth Mode (`--stealth`)**: Bypasses WAFs/Cloudflare by introducing random jitter and intelligent User-Agent rotation.
+- **Heuristic Scanning**: Passively extracts parameters from JavaScript files and other sources before active probing.
 
-### Why Arjun?
+#### Smart Intelligence
+- **Risk Scoring**: Automatically scores discovered parameters based on sensitivity (e.g., `admin` > `utm_source`) and behavior.
+- **Auto-Vulnerability Checks**: Performs lightweight verification for Reflection (XSS) and Errors (SQLi) on discovered parameters.
 
-- **New!** **Stealth Mode**: Bypasses Cloudflare/WAFs with randomized jitter and user-agent rotation (`--stealth`).
-- **New!** **Smart Scoring**: Analyzes parameters for risk (e.g., `admin`, `id`) and auto-tests for basic vulnerabilities.
-- **New!** **HTML Reporting**: Generates rich, color-coded HTML reports (`-oH report.html`).
-- Supports `GET/POST/POST-JSON/POST-XML` requests
-- Automatically handles rate limits and timeouts
-- Export results to: BurpSuite, text, JSON, or HTML file
-- Import targets from: BurpSuite, text file or a raw request file
-- Can passively extract parameters from JS or 3 external sources
+#### Reporting
+- **HTML Reports**: Generates rich, color-coded HTML reports for clients/managers.
+- **Burp Suite Integration**: Export results directly to Burp Proxy.
+- **JSON/Text Support**: Flexible output formats for pipeline integration.
 
-### Installing Arjun
+---
 
+### Installation
 
-You can install `arjun` with pip as following:
+**Prerequisites:** Python 3.8+
+
+#### Standard Installation
+```bash
+git clone https://github.com/your-repo/Arjun-X.git
+cd Arjun-X
+pip install .
 ```
-pip3 install arjun
+
+#### Development Installation
+For developers who want to modify the core:
+```bash
+pip install -e .
 ```
 
-or, by downloading this repository and running
+---
+
+### Usage
+
+#### Basic Scan
+Find parameters for a single URL:
+```bash
+arjun -u https://api.example.com/v1/user
 ```
-python3 setup.py install
+
+#### Stealth Scan (Recommended for WAFs)
+Enable jitter and random User-Agents:
+```bash
+arjun -u https://api.example.com/v1/user --stealth
 ```
 
-### How to use Arjun?
+#### Generate Professional Report
+Save the output to an HTML file for review:
+```bash
+arjun -u https://api.example.com/v1/user -oH report.html
+```
 
-A detailed usage guide is available on [Usage](https://github.com/s0md3v/Arjun/wiki/Usage) section of the Wiki.
+#### JSON Output with POST Method
+Send JSON payloads instead of GET parameters:
+```bash
+arjun -u https://api.example.com/login -m JSON -o result.json
+```
 
-Direct links to some basic options are given below:
+---
 
-- [Scan a single URL](https://github.com/s0md3v/Arjun/wiki/Usage#scan-a-single-url)
-- [Import targets](https://github.com/s0md3v/Arjun/wiki/Usage#import-multiple-targets)
-- [Export results](https://github.com/s0md3v/Arjun/wiki/Usage#save-output-to-a-file)
-- [Use custom HTTP headers](https://github.com/s0md3v/Arjun/wiki/Usage#use-custom-http-headers)
+### Command Line Options
 
-Optionally, you can use the `--help` argument to explore Arjun on your own.
+| Option | Description |
+|--------|-------------|
+| `-u` | Target URL |
+| `-w` | path to wordlist |
+| `-m` | Method (GET/POST/JSON/XML) |
+| `-t` | Number of threads (default: 5) |
+| `-d` | Delay between requests |
+| `--stealth` | Enable stealth mode (random delays + UA rotation) |
+| `--stable` | Prefer stability over speed |
+| `-oH` | Output path for HTML report |
+| `-o` | Output path for JSON file |
+| `--passive` | Collect params from passive sources first |
 
-##### Credits
-The parameter names wordlist is created by extracting top parameter names from [CommonCrawl](http://commoncrawl.org) dataset and merging best words from [SecLists](https://github.com/danielmiessler/SecLists) and [param-miner](https://github.com/PortSwigger/param-miner) wordlists into that.\
-`db/special.json` wordlist is taken from [data-payloads](https://github.com/yehgdotnet/data-payloads).
+---
 
-### My Version Screenshot
+### Screenshots
+
+#### CLI Output with Risk Scoring
 
 <img width="682" height="248" alt="Screenshot 2025-11-21 170834" src="https://github.com/user-attachments/assets/fe557438-47d2-4814-b28f-4b9b983530a2" />
 
@@ -91,4 +128,13 @@ The parameter names wordlist is created by extracting top parameter names from [
 ### Report HTML
 
 <img width="1904" height="461" alt="image" src="https://github.com/user-attachments/assets/74b9baaf-7151-446e-9347-c7b1c4267728" />
+
+
+### Credits
+
+Based on the original work by [s0md3v](https://github.com/s0md3v).
+- **Wordlists**: Merged from CommonCrawl, SecLists, and Param-Miner.
+- **Special Payloads**: Adapted from data-payloads.
+
+**License**: MIT
 
