@@ -102,18 +102,31 @@ arjun -u https://api.example.com/login -m JSON -o result.json
 
 ### Command Line Options
 
-| Option | Description |
-|--------|-------------|
-| `-u` | Target URL |
-| `-w` | path to wordlist |
-| `-m` | Method (GET/POST/JSON/XML) |
-| `-t` | Number of threads (default: 5) |
-| `-d` | Delay between requests |
-| `--stealth` | Enable stealth mode (random delays + UA rotation) |
-| `--stable` | Prefer stability over speed |
-| `-oH` | Output path for HTML report |
-| `-o` | Output path for JSON file |
-| `--passive` | Collect params from passive sources first |
+| Option | Argument | Description |
+|------|---------|------------|
+| `-h`, `--help` | — | Show this help message and exit |
+| `-u` | `URL` | Target URL |
+| `-o`, `-oJ` | `JSON_FILE` | Path for JSON output file |
+| `-oT` | `TEXT_FILE` | Path for text output file |
+| `-oB` | `[BURP_PROXY]` | Output to Burp Suite Proxy (default: `127.0.0.1:8080`) |
+| `-d` | `DELAY` | Delay between requests in seconds (default: `0`) |
+| `-t` | `THREADS` | Number of concurrent threads (default: `5`) |
+| `-w` | `WORDLIST` | Wordlist file path (default: `{arjundir}/db/large.txt`) |
+| `-m` | `METHOD` | Request method: `GET`, `POST`, `XML`, `JSON` (default: `GET`) |
+| `-i` | `[IMPORT_FILE]` | Import target URLs from file |
+| `-T` | `TIMEOUT` | HTTP request timeout in seconds (default: `15`) |
+| `-c` | `CHUNKS` | Chunk size (number of parameters sent at once) |
+| `-q` | — | Quiet mode (no output) |
+| `--rate-limit` | `RATE_LIMIT` | Max requests per second (default: `9999`) |
+| `--headers` | `[HEADERS]` | Add headers (separate multiple headers with a new line) |
+| `--passive` | `[PASSIVE]` | Collect parameter names from passive sources (wayback, commoncrawl, otx) |
+| `--stable` | — | Prefer stability over speed |
+| `--include` | `INCLUDE` | Include this data in every request |
+| `--disable-redirects` | — | Disable redirects |
+| `--casing` | `CASING` | Casing style for params (e.g. `like_this`, `likeThis`, `likethis`) |
+| `--stealth` | — | Enable stealth mode (jitter, random User-Agent) |
+| `-oH` | `HTML_FILE` | Path for HTML output file |
+
 
 ---
 
