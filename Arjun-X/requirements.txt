@@ -1,0 +1,6 @@
+
+requests>=2.0.0
+dicttoxml>=1.7.4
+cloudscraper>=1.2.70
+fake-useragent>=1.1.0
+ratelimit>=2.2.1
