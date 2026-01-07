@@ -74,6 +74,10 @@ For developers who want to modify the core:
 pip install -e .
 ```
 
+```bash
+pip install arjun-cli
+```
+
 ---
 
 ### Usage
