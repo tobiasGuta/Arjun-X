@@ -42,6 +42,10 @@ Arjun-X automates the discovery process by sending requests with huge lists of p
 - **Stealth Mode (`--stealth`)**: Bypasses WAFs/Cloudflare by introducing random jitter and intelligent User-Agent rotation.
 - **Heuristic Scanning**: Passively extracts parameters from JavaScript files and other sources before active probing.
 
+#### Stability & Resilience
+- **Smart Error Recovery**: Automatically detects and recovers from transient network failures (DNS, connection resets) with intelligent retries.
+- **Adaptive Execution**: Prevents scan failures by handling temporary connectivity drops gracefully without interrupting the workflow.
+
 #### Smart Intelligence
 - **Risk Scoring**: Automatically scores discovered parameters based on sensitivity (e.g., `admin` > `utm_source`) and behavior.
 - **Auto-Vulnerability Checks**: Performs lightweight verification for Reflection (XSS) and Errors (SQLi) on discovered parameters.
@@ -142,6 +146,9 @@ arjun -u https://api.example.com/login -m JSON -o result.json
 
 <img width="1904" height="461" alt="image" src="https://github.com/user-attachments/assets/74b9baaf-7151-446e-9347-c7b1c4267728" />
 
+### Video
+
+https://github.com/user-attachments/assets/614394c2-1363-4d01-b014-263b42059690
 
 ### Credits
 
@@ -150,4 +157,3 @@ Based on the original work by [s0md3v](https://github.com/s0md3v).
 - **Special Payloads**: Adapted from data-payloads.
 
 **License**: MIT
-
